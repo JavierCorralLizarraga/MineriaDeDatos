@@ -6,20 +6,29 @@ tar -xvzf tic.tar.gz
 
 #b)Conteo de líneas y columnas archivo de entrenamiento (ticdata2000.txt) y prueba (ticeval2000.txt)
 #Número de líneas
-wc -l ticdata2000.txt #Resultan 5822
-wc -l ticeval2000.txt #Resultan 4000
+wc -l ticdata2000.txt 
+#Resultan 5822
+wc -l ticeval2000.txt 
+#Resultan 4000
 
 #Número de columnas
-awk '{print NF}' ticdata2000.txt|tail -n 1 #Resultan 86
-awk '{print NF}' ticeval2000.txt|tail -n 1 #Resultan 85
+awk '{print NF}' ticdata2000.txt|head -n 1 
+#Resultan 86
+awk '{print NF}' ticeval2000.txt|head -n 1 
+#Resultan 85
 
 
 #c)Agregue los encabezados a las columnas de los archivos de datos
+#Archivo de entrenamiento
+egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f2 | paste -sd '\t' > columnas_entre.txt
+cat columnas_entre.txt ticdata2000.txt | tr '\t' '|' > ticdata2000_h.txt
+
+#Archivo de prueba
+egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f2 | paste -sd '\t' | cut -f1-85 > columnas_eval.txt
+cat columnas_eval.txt ticeval2000.txt | tr '\t' '|' > ticeval2000_h.tx
 
 
-# 2.2) 
-¿Se puede determinar el tipo de codificación de los archivos? Sí/no ¿por qué?
-    Debido a la forma en que se guarda el archivo con encoding con ciertas letras al principio, 
-    estas se pueden tomar como referencia para determinar el encoding. Este proceso lo realizan ciertos editores de texto 
-    como atom o notepad, pero tambien podemos encontrarlo con el comando de bash "file *" el cual nos da una lista de los 
-    archivos en el directorio y su respectivo encoding 
+
+
+#f)
+egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f1,2 |egrep `egrep "target variable" TicDataDescr.txt | egrep -o "[A-Z]{2,}"`| cut -d' ' -f1 > num_col.txt
