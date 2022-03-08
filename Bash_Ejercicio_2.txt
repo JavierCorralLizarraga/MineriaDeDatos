@@ -1,0 +1,17 @@
+#2.1 
+#a)Bajar archivo
+curl -s https://archive.ics.uci.edu/ml/machine-learning-databases/tic-mld/tic.tar.gz > tic.tar.gz
+# Lo descomprime
+tar -xvzf tic.tar.gz 
+
+#b)Conteo de líneas y columnas archivo de entrenamiento (ticdata2000.txt) y prueba (ticeval2000.txt)
+#Número de líneas
+wc -l ticdata2000.txt #Resultan 5822
+wc -l ticeval2000.txt #Resultan 4000
+
+#Número de columnas
+awk '{print NF}' ticdata2000.txt|tail -n 1 #Resultan 86
+awk '{print NF}' ticeval2000.txt|tail -n 1 #Resultan 85
+
+
+#c)Agregue los encabezados a las columnas de los archivos de datos
