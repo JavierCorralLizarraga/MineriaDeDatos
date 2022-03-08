@@ -15,3 +15,11 @@ awk '{print NF}' ticeval2000.txt|tail -n 1 #Resultan 85
 
 
 #c)Agregue los encabezados a las columnas de los archivos de datos
+
+
+# 2.2) 
+¿Se puede determinar el tipo de codificación de los archivos? Sí/no ¿por qué?
+    Debido a la forma en que se guarda el archivo con encoding con ciertas letras al principio, 
+    estas se pueden tomar como referencia para determinar el encoding. Este proceso lo realizan ciertos editores de texto 
+    como atom o notepad, pero tambien podemos encontrarlo con el comando de bash "file *" el cual nos da una lista de los 
+    archivos en el directorio y su respectivo encoding 
