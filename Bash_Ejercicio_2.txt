@@ -34,7 +34,7 @@ cut -d '|' -f 2-3  catalogo1.txt | sed -e '1i\MOSTYPE|MOSTYPECAT' > catalogo1b.t
 rm catalogo1.txt
 # sort catalogo
 head -n 1 catalogo1b.txt > aux1.txt
-sed -e '1d'catalogo1b.txt | sort -t '|' -k 1n > aux2.txt
+sed -e '1d' catalogo1b.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_cat1.txt
 
 # 1. average age
@@ -43,7 +43,7 @@ cut -d '|' -f 1-2  catalogo2.txt | sed -e '1i\MGEMLEEF|MGEMLEEFTYPE' > catalogo2
 rm catalogo2.txt
 # sort catalogo
 head -n 1 catalogo2b.txt > aux1.txt
-sed -e '1d'catalogo2b.txt | sort -t '|' -k 1n > aux2.txt
+sed -e '1d' catalogo2b.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_cat2.txt
 
 # 2. customer main type
@@ -52,7 +52,7 @@ cut -d '|' -f 1-2  catalogo3.txt | sed -e '1i\MOSHOOFD|MOSHOOFDTYPE' > catalogo3
 rm catalogo3.txt
 # sort catalogo
 head -n 1 catalogo3b.txt > aux1.txt
-sed -e '1d'catalogo3b.txt | sort -t '|' -k 1n > aux2.txt
+sed -e '1d' catalogo3b.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_cat3.txt
 
 # 3. roman catholic
@@ -61,7 +61,7 @@ cut -d '|' -f 1-4  catalogo4.txt | sed -e '1i\MGODRK|MGODRKTYPE' | tr -d ' '> ca
 rm catalogo4.txt
 # sort catalogo
 head -n 1 catalogo4b.txt > aux1.txt
-sed -e '1d'catalogo4b.txt | sort -t '|' -k 1n > aux2.txt
+sed -e '1d' catalogo4b.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_cat4.txt
 
 # 4. contribution 
@@ -70,20 +70,20 @@ cut -d '|' -f 1-2  catalogo5.txt | sed -e '1iPART|PWAPARTTYPE' | tr -d ' '> cata
 rm catalogo5.txt
 # sort catalogo
 head -n 1 catalogo5b.txt > aux1.txt
-sed -e '1d'catalogo5b.txt | sort -t '|' -k 1n > aux2.txt
+sed -e '1d' catalogo5b.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_cat5.txt
 
 # sort data
-head -n 1 catalogo4.txt > aux1.txt
-sed -e '1d'catalogo4.txt | sort -t '|' -k 1n > aux2.txt
-
+head -n 1 ticdata2000_h.txt > aux1.txt
+sed -e '1d' ticdata2000_h.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
 
 #joins ya sorted
-join aux_data.txt aux_cat1.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data. txt
-join aux_data.txt aux_cat2.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data.txt
-join aux_data.txt aux_cat3.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data.txt
-join aux_data.txt aux_cat4.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data.txt
-join aux_data.txt aux_cat5.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data.txt
+join aux_data.txt aux_cat1.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data1.txt
+join aux_data.txt aux_cat2.txt --header -1 1 -2 4 -t '|' -a 1 > aux_data1.txt
+join aux_data.txt aux_cat3.txt --header -1 1 -2 5 -t '|' -a 1 > aux_data1.txt
+join aux_data.txt aux_cat4.txt --header -1 1 -2 6 -t '|' -a 1 > aux_data1.txt
+join aux_data.txt aux_cat5.txt --header -1 1 -2 44 -t '|' -a 1 > aux_data1.txt
 
 #f)
 egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f1,2 |egrep `egrep "target variable" TicDataDescr.txt | egrep -o "[A-Z]{2,}"`| cut -d' ' -f1 > num_col.txt
