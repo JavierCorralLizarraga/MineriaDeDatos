@@ -1,9 +1,4 @@
 MGEMLEEF|MGEMLEEFTYPE
-
-
-
-
-
 1|20-30 years
 2|30-40 years
 3|40-50 years

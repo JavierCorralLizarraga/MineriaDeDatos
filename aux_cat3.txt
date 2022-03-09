@@ -1,13 +1,4 @@
 MOSHOOFD|MOSHOOFDTYPE
-
-
-
-
-
-
-
-
-
 1|Successful hedonists
 2|Driven Growers
 3|Average Family

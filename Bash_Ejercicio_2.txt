@@ -73,25 +73,43 @@ head -n 1 catalogo5b.txt > aux1.txt
 sed -e '1d' catalogo5b.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_cat5.txt
 
-# sort data
+
+dos2unix *
+
+sed -i '/^$/d' aux_cat2.txt
+sed -i '/^$/d' aux_cat3.txt
+sed -i '/^$/d' aux_cat4.txt
+sed -i '/^$/d' aux_cat5.txt
+
+# sort data and join data 1
 head -n 1 ticdata2000_h.txt > aux1.txt
 sed -e '1d' ticdata2000_h.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_data.txt
-
-dos2unix aux_cat1.txt
-dos2unix aux_cat2.txt
-dos2unix aux_cat3.txt
-dos2unix aux_cat4.txt
-dos2unix aux_cat5.txt
-dos2unix aux_data1.txt
-dos2unix aux_data.txt
-
-#joins ya sorted
 join aux_data.txt aux_cat1.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data1.txt
-join aux_data.txt aux_cat2.txt --header -1 1 -2 4 -t '|' -a 1 > aux_data1.txt
-join aux_data.txt aux_cat3.txt --header -1 1 -2 5 -t '|' -a 1 > aux_data1.txt
-join aux_data.txt aux_cat4.txt --header -1 1 -2 6 -t '|' -a 1 > aux_data1.txt
-join aux_data.txt aux_cat5.txt --header -1 1 -2 44 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 2
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 4 > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat2.txt --header -1 4 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 3
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 5n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat3.txt --header -1 5 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 4
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 6n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat4.txt --header -1 6 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 5
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 44n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat5.txt --header -1 44 -2 1 -t '|' -a 1 > aux_data1.txt
 
 #f)
 egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f1,2 |egrep `egrep "target variable" TicDataDescr.txt | egrep -o "[A-Z]{2,}"`| cut -d' ' -f1 > num_col.txt
