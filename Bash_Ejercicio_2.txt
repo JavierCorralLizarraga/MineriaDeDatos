@@ -78,6 +78,14 @@ head -n 1 ticdata2000_h.txt > aux1.txt
 sed -e '1d' ticdata2000_h.txt | sort -t '|' -k 1n > aux2.txt
 cat aux1.txt aux2.txt > aux_data.txt
 
+dos2unix aux_cat1.txt
+dos2unix aux_cat2.txt
+dos2unix aux_cat3.txt
+dos2unix aux_cat4.txt
+dos2unix aux_cat5.txt
+dos2unix aux_data1.txt
+dos2unix aux_data.txt
+
 #joins ya sorted
 join aux_data.txt aux_cat1.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data1.txt
 join aux_data.txt aux_cat2.txt --header -1 1 -2 4 -t '|' -a 1 > aux_data1.txt
