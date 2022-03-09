@@ -1,10 +1,10 @@
 # MineriaDeDatos
 trabajos para el curso de mineria de datos
 
-# mainers 
+# Chayannes 
 ## Miembros 
 
 | **Nombre**                       | **Clave  Única** |
 |------------------------------|--------------|
-| Damian  . . .     | . . .        |
+| Damián Pérez Landeros        | 174367      |
 | Javier Corral Lizarraga           | 188190       |
