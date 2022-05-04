@@ -1,0 +1,122 @@
+#2.1 
+#a)Bajar archivo
+curl -s https://archive.ics.uci.edu/ml/machine-learning-databases/tic-mld/tic.tar.gz > tic.tar.gz
+# Lo descomprime
+tar -xvzf tic.tar.gz 
+
+#b)Conteo de líneas y columnas archivo de entrenamiento (ticdata2000.txt) y prueba (ticeval2000.txt)
+#Número de líneas
+wc -l ticdata2000.txt 
+#Resultan 5822
+wc -l ticeval2000.txt 
+#Resultan 4000
+
+#Número de columnas
+awk '{print NF}' ticdata2000.txt|head -n 1 
+#Resultan 86
+awk '{print NF}' ticeval2000.txt|head -n 1 
+#Resultan 85
+
+
+#c)Agregue los encabezados a las columnas de los archivos de datos
+#Archivo de entrenamiento
+egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f2 | paste -sd '\t' > columnas_entre.txt
+cat columnas_entre.txt ticdata2000.txt | tr '\t' '|' > ticdata2000_h.txt
+
+#Archivo de prueba
+egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f2 | paste -sd '\t' | cut -f1-85 > columnas_eval.txt
+cat columnas_eval.txt ticeval2000.txt | tr '\t' '|' > ticeval2000_h.txt
+
+#d)
+# 0. customer subtype
+sed -n '208,248p;249q'  TicDataDescr.txt | cut -f1-3 --output-delimiter='|' > catalogo1.txt
+cut -d '|' -f 2-3  catalogo1.txt | sed -e '1i\MOSTYPE|MOSTYPECAT' > catalogo1b.txt
+rm catalogo1.txt
+# sort catalogo
+head -n 1 catalogo1b.txt > aux1.txt
+sed -e '1d' catalogo1b.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_cat1.txt
+
+# 1. average age
+sed -n '252,262p;263q'  TicDataDescr.txt | sed -e 's/ /|/' > catalogo2.txt
+cut -d '|' -f 1-2  catalogo2.txt | sed -e '1i\MGEMLEEF|MGEMLEEFTYPE' > catalogo2b.txt
+rm catalogo2.txt
+# sort catalogo
+head -n 1 catalogo2b.txt > aux1.txt
+sed -e '1d' catalogo2b.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_cat2.txt
+
+# 2. customer main type
+sed -n '268,286p;287q'  TicDataDescr.txt | sed -e 's/ /|/' > catalogo3.txt
+cut -d '|' -f 1-2  catalogo3.txt | sed -e '1i\MOSHOOFD|MOSHOOFDTYPE' > catalogo3b.txt
+rm catalogo3.txt
+# sort catalogo
+head -n 1 catalogo3b.txt > aux1.txt
+sed -e '1d' catalogo3b.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_cat3.txt
+
+# 3. roman catholic
+sed -n '292,310p;311q'  TicDataDescr.txt | sed -e 's/ /|/' > catalogo4.txt
+cut -d '|' -f 1-4  catalogo4.txt | sed -e '1i\MGODRK|MGODRKTYPE' | tr -d ' '> catalogo4b.txt
+rm catalogo4.txt
+# sort catalogo
+head -n 1 catalogo4b.txt > aux1.txt
+sed -e '1d' catalogo4b.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_cat4.txt
+
+# 4. contribution 
+sed -n '316,334p;335q'  TicDataDescr.txt | cut -d "f" -f1-2 --output-delimiter='|' > catalogo5.txt
+cut -d '|' -f 1-2  catalogo5.txt | sed -e '1iPART|PWAPARTTYPE' | tr -d ' '> catalogo5b.txt
+rm catalogo5.txt
+# sort catalogo
+head -n 1 catalogo5b.txt > aux1.txt
+sed -e '1d' catalogo5b.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_cat5.txt
+
+
+dos2unix *
+
+sed -i '/^$/d' aux_cat2.txt
+sed -i '/^$/d' aux_cat3.txt
+sed -i '/^$/d' aux_cat4.txt
+sed -i '/^$/d' aux_cat5.txt
+
+# sort data and join data 1
+head -n 1 ticdata2000_h.txt > aux1.txt
+sed -e '1d' ticdata2000_h.txt | sort -t '|' -k 1n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat1.txt --header -1 1 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 2
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 4 > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat2.txt --header -1 4 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 3
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 5n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat3.txt --header -1 5 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 4
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 6n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat4.txt --header -1 6 -2 1 -t '|' -a 1 > aux_data1.txt
+
+# sort data and join data 5
+head -n 1 aux_data1.txt > aux1.txt
+sed -e '1d' aux_data1.txt | sort -t '|' -k 44n > aux2.txt
+cat aux1.txt aux2.txt > aux_data.txt
+join aux_data.txt aux_cat5.txt --header -1 44 -2 1 -t '|' -a 1 > aux_data1.txt
+
+#f)
+egrep --binary-files=text "^[0-9]+\s[A-Z][A-Z]{2,}" TicDataDescr.txt | cut -d' ' -f1,2 |egrep `egrep "target variable" TicDataDescr.txt | egrep -o "[A-Z]{2,}"`| cut -d' ' -f1 > num_col.txt
+
+# 2.2) 
+¿Se puede determinar el tipo de codificación de los archivos? Sí/no ¿por qué?
+    Debido a la forma en que se guarda el archivo con encoding con ciertas letras al principio, 
+    estas se pueden tomar como referencia para determinar el encoding. Este proceso lo realizan ciertos editores de texto 
+    como atom o notepad, pero tambien podemos encontrarlo con el comando de bash "file *" el cual nos da una lista de los 
+    archivos en el directorio y su respectivo encoding 
