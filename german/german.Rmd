@@ -1,7 +1,9 @@
 ---
 title: "german"
-output: html_notebook
-editor_options: 
+output:
+  html_document:
+    df_print: paged
+editor_options:
   chunk_output_type: inline
 ---
 
@@ -13,6 +15,7 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+library(GGally)
 
 source("metadata.R"  , encoding = 'UTF-8')
 source("utils.R"     , encoding = 'UTF-8')
@@ -31,7 +34,9 @@ glimpse(german_data)
 ```{r}
 tipos_de_graficas(german_data, todas=TRUE)
 
-tipos_de_graficas(german_data, todas=FALSE, c('season','no3','opo4'))
+tipos_de_graficas(german_data, todas=FALSE, c('purpose','credit_history','job'))
+
+colnames(german_data)
 ```
 
 vemos que filas tienen NAs
