@@ -1,0 +1,49 @@
+---
+title: "algas"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+importamos librerias y corremos los archivos reproducibles
+```{r}
+library(readr)
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+source("metadata.R"  , encoding = 'UTF-8')
+source("utils.R"     , encoding = 'UTF-8')
+source("00-load.R"   , encoding = 'UTF-8')
+source("01-prepare.R", encoding = 'UTF-8')
+source("02-clean.R",   encoding = 'UTF-8')
+source("toolset.R", encoding = 'UTF-8')
+```
+## Estructura de los datos
+```{r}
+summary(algas_data)
+
+glimpse(algas_data)
+```
+## Función que grafica cada par de variables
+```{r}
+tipos_de_graficas(algas_data, todas=TRUE)
+
+tipos_de_graficas(algas_data, todas=FALSE, c('season','no3','opo4'))
+```
+## Función que imputa el valor central en las variables con NAs
+```{r}
+imputar_central(algas_data)
+```
+## Función que imputa por similitud 
+
+(el valor con na que se imputa es la entrada 28 de po4)
+```{r}
+algas_data <- algas_data %>% mutate_at(c(1,2,3), list(as.factor))
+imputar_por_similitud(algas_data, 5)
+imputar_por_similitud(algas_data, 2)
+```
+vemos que la imputacion con 5 vecinos nos da 199.7292 mientras que la imputacion con 2 vecinos nos da 331.1665
+

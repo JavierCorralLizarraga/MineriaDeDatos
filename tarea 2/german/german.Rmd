@@ -1,0 +1,57 @@
+---
+title: "german"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+importamos librerias y corremos los archivos reproducibles
+```{r}
+library(readr)
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+source("metadata.R"  , encoding = 'UTF-8')
+source("utils.R"     , encoding = 'UTF-8')
+source("00-load.R"   , encoding = 'UTF-8')
+source("01-prepare.R", encoding = 'UTF-8')
+source("02-clean.R",   encoding = 'UTF-8')
+source("toolset.R", encoding = 'UTF-8')
+```
+## Estructura de los datos
+```{r}
+summary(german_data)
+
+glimpse(german_data)
+```
+## Función que grafica cada par de variables
+```{r}
+tipos_de_graficas(german_data, todas=TRUE)
+
+tipos_de_graficas(german_data, todas=FALSE, c('season','no3','opo4'))
+```
+
+vemos que filas tienen NAs
+```{r}
+german_data[!complete.cases(german_data),]
+```
+como no hay filas con NAs, las siguientes funciones de imputacion no tendran ningun efecto
+
+## Función que imputa el valor central en las variables con NAs
+```{r}
+imputar_central(german_data)
+```
+## Función que imputa por similitud 
+
+(el valor con na que se imputa es la entrada 28 de po4)
+```{r}
+german_data <- german_data %>% mutate_at(c(1,2,3), list(as.factor))
+imputar_por_similitud(german_data, 5)
+imputar_por_similitud(german_data, 2)
+```
+
+
+
