@@ -2,11 +2,11 @@ load <- function(){
   if(!file.exists('autos.rds')){
     autos_loc <- 'imports-85.csv'
     
-    autos_data <- read_csv(algas_url, 
-                      col_names = autos_colnames,
-                      na = '?')
+    autos_data <- read_csv(autos_loc, 
+                           col_names = autos_colnames,
+                           na = '?')
     saveRDS(autos_data, "autos.rds")
-    print('autos.rds se bajó guardó\n')
+    print('autos.rds se bajo guardo\n')
   }
   else{
     warning('autos.rds ya existe\n')
@@ -16,13 +16,6 @@ load <- function(){
   return(autos_data)
 }
 
-autos_clean_colnames <- function(x){
-  str_replace_all(tolower(x),"/| ",'_')
-}
-
-autos_clean_data <- function(x){
-  str_replace_all(tolower(x),"_",'')
-}
 
 tipos_de_graficas <- function(datos, todas=TRUE, lista){
   if(todas == TRUE && missing(lista)) {
@@ -62,8 +55,8 @@ imputar_por_similitud<-function(data,num_vecinos){
     data_dist_num<-scale(data_dist[,unlist(lapply(data_dist,is.numeric))])
     dist_num<-as.matrix(dist(data_dist_num,method = "euclidean"))[2:nrow(data_dist_num),1]
     data_dist_factor<-data_dist[,unlist(lapply(data_dist,is.factor))]
-    matriz_bool<-as.numeric(as.matrix(apply(data_dist_factor[2:nrow(data_dist_factor),],1,function(x) x==data_dist_factor[1,]),ncol=3))
-    dim(matriz_bool)<-c(nrow(data_dist_factor)-1,3)
+    matriz_bool<-as.numeric(as.matrix(apply(data_dist_factor[2:nrow(data_dist_factor),],1,function(x) x==data_dist_factor[1,]),ncol=ncol(data_dist_factor)))
+    dim(matriz_bool)<-c(nrow(data_dist_factor)-1,ncol(data_dist_factor))
     dist_fact<-apply(as.data.frame(matriz_bool),1,function(x) sqrt(sum(x)))
     dist<-dist_num+dist_fact
     dim(dist)<-c(nrow(data_dist_factor)-1,1)
