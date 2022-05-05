@@ -47,7 +47,6 @@ imputar_por_similitud<-function(data,num_vecinos){
     vecinos<-data_sin_na[vecinos$row_num,]
     vecinos<-data[vecinos$row_num,columnas_con_na]
     clases=sapply(vecinos,class)
-    print(clases)
     valores=list()
     for(i in 1:ncol(vecinos)){
       if(clases[i]=="numeric"){
