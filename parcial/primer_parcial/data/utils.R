@@ -4,7 +4,7 @@ load <- function(){
     
     autos_data <- read_csv(algas_url, 
                       col_names = autos_colnames,
-                      na = 'XXXXXXX')
+                      na = '?')
     saveRDS(autos_data, "autos.rds")
     print('autos.rds se bajó guardó\n')
   }
