@@ -7,7 +7,7 @@ load <- function(){
                       col_names = autos_colnames,
                       na = 'XXXXXXX')
     saveRDS(autos_data, "autos.rds")
-    print('autos.rds se bajó guardó\n')
+    print('autos.rds se bajÃ³ guardÃ³\n')
   }
   else{
     warning('autos.rds ya existe\n')
@@ -21,6 +21,6 @@ autos_clean_colnames <- function(x){
   str_replace_all(tolower(x),"/| ",'_')
 }
 
-autoss_clean_data <- function(x){
+autos_clean_data <- function(x){
   str_replace_all(tolower(x),"_",'')
 }
