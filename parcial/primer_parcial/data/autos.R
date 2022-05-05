@@ -36,9 +36,18 @@ tipos_de_graficas <- function(datos, todas=FALSE, lista){
 }
 
 tipos_de_graficas(autos_data,todas = TRUE)
-
-
-for(col in colnames(autos_data)){
-  ggplot(autos_data,aes(col))+
-    geom_histogram()
+dev.off()
+par(mfrow = c(4, 4))
+for(col in colnames(select_if(autos_data,is.numeric))){
+  hist(t(autos_data[col]),main = sprintf("Histogram of %s",col), xlab =sprintf("%s",col))
 }
+
+for(col in colnames(select_if(autos_data,is.numeric))){
+  hist(t(autos_data[col]),main = sprintf("Histogram of %s",col), xlab =sprintf("%s",col))
+}
+
+hist(autos_data["symboling"])
+
+ggplot(autos_data,aes("symboling"))+
+  geom_histogram()
+
