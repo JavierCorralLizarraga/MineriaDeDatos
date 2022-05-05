@@ -16,6 +16,9 @@ load <- function(){
   return(autos_data)
 }
 
+autos_clean_colnames <- function(x){
+  str_replace_all(tolower(x),'-','_')
+}
 
 tipos_de_graficas <- function(datos, todas=TRUE, lista){
   if(todas == TRUE && missing(lista)) {
