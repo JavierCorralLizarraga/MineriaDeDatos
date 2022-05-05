@@ -1,9 +1,5 @@
 #!/bin/bash
-
-imports-85.csv
-
-# grep -n '7. At' imports-85.names | cut -f 1 -d ":" # saca el lugar en el archivo de la seccion de atributos
-columnas=sed -n 61,89p imports-85.names | cut -f 2 -d "." | cut -f 1 -d ":" | sed "4,6d" | xargs -n26 -d'\n'
-
-
-echo "$columnas" >> metadata.R
+touch metadata.R
+echo 'autos_colnames <- c(' > metadata.R
+sed -n 61,89p imports-85.names | cut -f 2 -d "." | cut -f 1 -d ":" | sed "4,6d" | sed 's/^.//' | awk '{ printf "'\''%s'\','\n", $0 }' | xargs -n26 -d'\n' >> metadata.R
+echo ')' >> metadata.R
