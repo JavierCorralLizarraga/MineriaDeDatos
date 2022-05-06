@@ -28,20 +28,16 @@ ui <- fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30),
-      selectInput("nombre", "Caracteristica", names(autos_data))
+      selectInput("nombre", "Caracteristica", names(autos_data)),
+      selectInput("nombre2", "Segunda Caracteristica (Bivariado)", names(autos_data))
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel("Histograma", plotlyOutput("distPlot")),
-                  tabPanel("Summary", verbatimTextOutput("summary")),
-                  tabPanel("Boxplot", plotlyOutput("boxplot"))
+                  tabPanel("Univariado", plotlyOutput("distPlot")),
+                  tabPanel("Bivariado", plotlyOutput("distPlot2")),
+                  tabPanel("Multivariado", plotlyOutput("distPlot3"))
       )
     )        
   )
@@ -57,20 +53,53 @@ server <- function(input, output) {
     {
       # generate bins based on input$bins from ui.R
       x    <- autos_data[, input$nombre]
-      bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      bins <- seq(min(x), max(x), length.out = 40 + 1)
       
       # draw the histogram with the specified number of bins
       p <-ggplot(autos_data)+
         geom_histogram(mapping=aes_string(x=input$nombre),breaks=bins)
-      
-      ggplotly(p)
     }
     else
     {
-      
       p <-ggplot(autos_data, aes_string(x=input$nombre))+
         geom_bar()
     }
+    
+    ggplotly(p)
+  })
+  
+  output$distPlot2 <- renderPlotly({
+    
+    
+    if(is.numeric(autos_data[[input$nombre]]))
+    {
+      if(is.numeric(autos_data[[input$nombre2]]))
+      {
+        p <-ggplot(autos_data)+
+          geom_point(mapping=aes_string(x=input$nombre, y=input$nombre2))
+      }
+      else
+      {
+        p <-ggplot(autos_data)+
+          geom_boxplot(mapping=aes_string(x=input$nombre2, y=input$nombre))
+      }
+      
+    }
+    else
+    {
+      if(is.numeric(autos_data[[input$nombre2]]))
+      {
+        p <-ggplot(autos_data)+
+          geom_boxplot(mapping=aes_string(x=input$nombre, y=input$nombre2))
+      }
+      else
+      {
+        p <-ggplot(autos_data)+
+          geom_bar(mapping=aes_string(x=input$nombre, fill=input$nombre2))
+      }
+    }
+    
+    ggplotly(p)
   })
   
   # Generate a summary of the data ----
