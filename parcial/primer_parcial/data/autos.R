@@ -13,7 +13,7 @@ source("02-clean.R",   encoding = 'UTF-8')
 
 summary(autos_data)
 
-autos_data<-autos_data %>% mutate_at(c(3,4,5,6,7,8,9,10,15,16,18),list(as.factor))
+autos_data<-autos_data %>% mutate_at(c(3,4,5,6,7,8,9,15,16,18),list(as.factor))
 
 glimpse(autos_data)
 
@@ -46,3 +46,10 @@ for(col in colnames(select_if(autos_data,is.numeric))){
   boxplot(autos_data[col],main = sprintf("Boxplot of %s",col), xlab =sprintf("%s",col))
 }
 
+autos_data<-autos_data %>% mutate_at(10,as.double)
+
+autos_data[157, 'wheel_base'] = 95.7
+
+imputar_por_similitud(autos_data, 10)
+
+saveRDS(autos_data, "autos.rds")
