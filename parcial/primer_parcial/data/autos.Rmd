@@ -3,10 +3,7 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
+agregamos las librerias
 ```{r}
 library(readr)
 library(stringr)
@@ -16,26 +13,59 @@ library(ggplot2)
 library(ggthemes)
 ```
 
-
+corremos los scripts para que sea reproducible
 ```{r}
 source("metadata.R"  , encoding = 'UTF-8')
 source("utils.R"     , encoding = 'UTF-8')
 source("00-load.R"   , encoding = 'UTF-8')
+```
+mostramos los datos antes de modificar
+```{r}
+summary(autos_data)
+glimpse(autos_data)
+```
+ahora si modificamos los datos 
+```{r}
 source("01-prepare.R", encoding = 'UTF-8')
-```
-```{r}
 autos_data[problematic_rows,]
-```
-```{r}
 source("02-clean.R",   encoding = 'UTF-8')
+autos_data[problematic_rows,]
+#imputar_por_similitud(autos_data, 10)
+autos_data <- readRDS('autos_imputada_corregida.rds')
+```
+mostramos los datos post-modificacion
+```{r}
+summary(autos_data)
+glimpse(autos_data)
+```
+## EDA univariado
+```{r}
+library(gridExtra)
+h1 <- ggplot(autos_data, aes(price)) + geom_histogram()
+h2 <- ggplot(autos_data, aes(wheel_base)) + geom_histogram()
+h3 <- ggplot(autos_data, aes(curb_weight)) + geom_histogram()
+h4 <- ggplot(autos_data, aes(bore)) + geom_histogram()
+h5 <- ggplot(autos_data, aes(horsepower)) + geom_histogram()
+h6 <- ggplot(autos_data, aes(stroke)) + geom_histogram()
+grid.arrange (h1, h2, h3, h4, h5, h6, nrow=2)
 ```
 ```{r}
-autos_data[problematic_rows,]
+ggplot(autos_data, aes(price, horsepower, color=num_of_cylinders)) +
+  geom_point() + 
+  theme(legend.position="bottom") + 
+  scale_colour_colorblind()
+```
+notamos una distribucion similar en price, wheel_base y horsepower. Tambien tienen una distribucion similar bore y stroke
+
+## EDA bivariado
+```{r}
+tipos_de_graficas(autos_data)
+```
+asd
+
+## EDA multivariado
+```{r}
+ggparcoord(data = autos_data, columns = c(1:26), scale="uniminmax") + 
+  xlab("") + ylab("")
 ```
 
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
