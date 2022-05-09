@@ -15,7 +15,7 @@ instalar <- function(paquete) {
   }
 }
 
-paquetes <- c("shiny","plotly","ggplot2")
+paquetes <- c("shiny","plotly","ggplot2","ggbiplot")
 
 lapply(paquetes, instalar);
 
@@ -37,7 +37,7 @@ ui <- fluidPage(
       tabsetPanel(type = "tabs",
                   tabPanel("Univariado", plotlyOutput("distPlot")),
                   tabPanel("Bivariado", plotlyOutput("distPlot2")),
-                  tabPanel("Multivariado", plotlyOutput("distPlot3"))
+                  tabPanel("Multivariado", plotlyOutput("distPlot3"), plotOutput("distPlot4"))
       )
     )        
   )
@@ -75,8 +75,7 @@ server <- function(input, output) {
     {
       if(is.numeric(autos_data[[input$nombre2]]))
       {
-        p <-ggplot(autos_data)+
-          geom_point(mapping=aes_string(x=input$nombre, y=input$nombre2))
+        p <-plot_ly(x=autos_data[[input$nombre]], y=autos_data[[input$nombre2]], type="scatter", mode="markers") %>% layout(xaxis = list(title=input$nombre), yaxis = list(title=input$nombre2))
       }
       else
       {
@@ -100,6 +99,25 @@ server <- function(input, output) {
     }
     
     ggplotly(p)
+  })
+  
+  
+  output$distPlot3 <- renderPlotly({
+  
+    autos_data.pca <- prcomp(autos_data[,c(1,2,11:14,17,19:26)], center = TRUE,scale. = TRUE)
+    
+    p <- ggbiplot(autos_data.pca, groups = autos_data[[input$nombre]])
+    
+    ggplotly(p)
+    
+  })
+  
+  output$distPlot4 <- renderPlot({
+
+    autos_data.pca <- prcomp(autos_data[,c(1,2,11:14,17,19:26)], center = TRUE,scale. = TRUE)
+    
+    plot(autos_data.pca)
+    
   })
   
   # Generate a summary of the data ----
