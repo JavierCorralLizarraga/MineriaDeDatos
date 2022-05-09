@@ -59,13 +59,19 @@ notamos una distribucion similar en price, wheel_base y horsepower. Tambien tien
 
 ## EDA bivariado
 ```{r}
-tipos_de_graficas(autos_data)
+library(GGally)
+tipos_de_graficas(autos_data, todas=FALSE, c("symboling", "normalized_losses", "fuel_type", "aspiration", "num_of_doors", "body_style", "drive_wheels"))
+                  
+tipos_de_graficas(autos_data, todas=FALSE, c("engine_location", "wheel_base", "length", "width", "height", "curb_weight", "engine_type", "num_of_cylinders", "engine_size", "fuel_system", "bore", "stroke" ))
+
+tipos_de_graficas(autos_data, todas=FALSE, c("compression_ratio", "horsepower", "peak_rpm", "city_mpg", "highway_mpg", "price" ))
+colnames(autos_data)
 ```
-asd
 
 ## EDA multivariado
 ```{r}
 ggparcoord(data = autos_data, columns = c(1:26), scale="uniminmax") + 
-  xlab("") + ylab("")
+  xlab("") + ylab("") +
+  theme(axis.text.x = element_text(angle = 45))
 ```
 
