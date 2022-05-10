@@ -3,7 +3,8 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-agregamos las librerias
+# Análisis Exploratorio Autos #
+
 ```{r}
 library(readr)
 library(stringr)
@@ -13,71 +14,98 @@ library(ggplot2)
 library(ggthemes)
 ```
 
-corremos los scripts para que sea reproducible
+
 ```{r}
 source("metadata.R"  , encoding = 'UTF-8')
 source("utils.R"     , encoding = 'UTF-8')
 source("00-load.R"   , encoding = 'UTF-8')
-```
-mostramos los datos antes de modificar
-```{r}
-summary(autos_data)
-glimpse(autos_data)
-```
-ahora si modificamos los datos 
-```{r}
 source("01-prepare.R", encoding = 'UTF-8')
+```
+```{r}
 autos_data[problematic_rows,]
+```
+```{r}
 source("02-clean.R",   encoding = 'UTF-8')
+```
+```{r}
 autos_data[problematic_rows,]
-#imputar_por_similitud(autos_data, 10)
-autos_data <- readRDS('autos_imputada_corregida.rds')
 ```
-mostramos los datos post-modificacion
-```{r}
-summary(autos_data)
-glimpse(autos_data)
-```
-## EDA univariado
-```{r}
-library(gridExtra)
-h1 <- ggplot(autos_data, aes(price)) + geom_histogram()
-h2 <- ggplot(autos_data, aes(wheel_base)) + geom_histogram()
-h3 <- ggplot(autos_data, aes(curb_weight)) + geom_histogram()
-h4 <- ggplot(autos_data, aes(bore)) + geom_histogram()
-h5 <- ggplot(autos_data, aes(horsepower)) + geom_histogram()
-h6 <- ggplot(autos_data, aes(stroke)) + geom_histogram()
-grid.arrange (h1, h2, h3, h4, h5, h6, nrow=2)
-```
-```{r}
-ggplot(autos_data, aes(price, horsepower, color=num_of_cylinders)) +
-  geom_point() + 
-  theme(legend.position="bottom") + 
-  scale_colour_colorblind()
-```
-notamos una distribucion similar en price, wheel_base y horsepower. Tambien tienen una distribucion similar bore y stroke
 
-## EDA bivariado
+### La codificación del archivo imports-85.names es: ASCII text    
+### La codificación del archivo imports-85.csv es: ASCII text 
+
+
+#### Imputamos por similitud los valores NA
+```{r}
+autos_data<-imputar_por_similitud(autos_data,5)
+```
+
+
+#### Notamos que hay un problema en la columna wheel-base que tiene un String que hace que la columna se lea como factor.
+
+#### Corregimos dicho error
+
+```{r}
+autos_data$`wheel-base`<-as.numeric(as.character(autos_data$`wheel-base`))
+autos_data[157,10]<-95.7
+summary(autos_data)
+```
+
+## Análisis Univariado
+
+
+### Histogramas
+```{r}
+dev.off()
+for(col in colnames(select_if(autos_data,is.numeric))){
+  hist(t(autos_data[col]),main = sprintf("Histogram of %s",col), xlab =sprintf("%s",col))
+}
+```
+### Boxplots
+```{r}
+
+for(col in colnames(select_if(autos_data,is.numeric))){
+  boxplot(autos_data[col],main = sprintf("Boxplot of %s",col), xlab =sprintf("%s",col))
+}
+```
+#### Podemos ver datos atípicos en Curb-Weight, podemos ver que casi todas las variables son monomodales, a excepción de Height y Peak-RPM. Podemos apreciar también que en su mayoría las variables son asimétricas, excepto Stroke y Length. El Precio parece seguir una distribución exponencial.
+
+
+
+### Gráficas de Frecuencia para Variables Categóricas
+```{r}
+for(col in colnames(select_if(autos_data,is.factor))){
+  barplot(table(autos_data[col]),main = sprintf("Frequency of %s",col), xlab =sprintf("%s",col))
+}
+```
+
+#### Debemos poner especial atención a los valores con poca frecuencia que tengan precios altos, ya que podría haber atributos que eleven el precio del auto simplemente por ser más costosos en la producción
+
+
+## Análisis Bivariado
+
 ```{r}
 library(GGally)
 tipos_de_graficas(autos_data, todas=FALSE, c("symboling", "normalized_losses", "fuel_type", "aspiration", "num_of_doors", "body_style", "drive_wheels"))
                   
 tipos_de_graficas(autos_data, todas=FALSE, c("engine_location", "wheel_base", "length", "width", "height", "curb_weight", "engine_type", "num_of_cylinders", "engine_size", "fuel_system", "bore", "stroke" ))
-
 tipos_de_graficas(autos_data, todas=FALSE, c("compression_ratio", "horsepower", "peak_rpm", "city_mpg", "highway_mpg", "price" ))
 colnames(autos_data)
 ```
 
-## EDA multivariado
+## Análisis Multivariado
+
 ```{r}
 ggparcoord(data = autos_data, columns = c(1:26), scale="uniminmax") + 
   xlab("") + ylab("") +
   theme(axis.text.x = element_text(angle = 45))
 ```
+
 ```{r}
 hcav <- hclust(dist(autos_data), method="ave")
 plot(hcav)
 ```
+
 
 ```{r}
 library(vcd)
@@ -88,5 +116,4 @@ doubledecker(xtabs(freq, normalized_losses + make + body_style, data = autos_dat
 ```{r}
 mosaicplot(xtabs(Freq ~ make, data=autos_data), main="")
 ```
-
 
