@@ -12,6 +12,8 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+library(plotly)
+library(GGally)
 ```
 
 
@@ -37,16 +39,23 @@ autos_data[problematic_rows,]
 
 #### Imputamos por similitud los valores NA
 ```{r}
+autos_data<-autos_data %>% mutate_at(c(3,4,5,6,7,8,9,10,15,16,18),list(as.factor))
 autos_data<-imputar_por_similitud(autos_data,5)
+autos_data[!complete.cases(autos_data),]
 ```
 
 
 #### Notamos que hay un problema en la columna wheel-base que tiene un String que hace que la columna se lea como factor.
 
+```{r}
+glimpse(autos_data)
+```
+
+
 #### Corregimos dicho error
 
 ```{r}
-autos_data$`wheel-base`<-as.numeric(as.character(autos_data$`wheel-base`))
+autos_data$wheel_base<-as.numeric(as.character(autos_data$wheel_base))
 autos_data[157,10]<-95.7
 summary(autos_data)
 ```
@@ -56,18 +65,11 @@ summary(autos_data)
 
 ### Histogramas
 ```{r}
-dev.off()
 for(col in colnames(select_if(autos_data,is.numeric))){
   hist(t(autos_data[col]),main = sprintf("Histogram of %s",col), xlab =sprintf("%s",col))
 }
 ```
-### Boxplots
-```{r}
 
-for(col in colnames(select_if(autos_data,is.numeric))){
-  boxplot(autos_data[col],main = sprintf("Boxplot of %s",col), xlab =sprintf("%s",col))
-}
-```
 #### Podemos ver datos atípicos en Curb-Weight, podemos ver que casi todas las variables son monomodales, a excepción de Height y Peak-RPM. Podemos apreciar también que en su mayoría las variables son asimétricas, excepto Stroke y Length. El Precio parece seguir una distribución exponencial.
 
 
@@ -86,36 +88,30 @@ for(col in colnames(select_if(autos_data,is.factor))){
 
 
 ```{r}
-autos_data<-readRDS('autos_imputada_corregida.rds')
-library(GGally)
-tipos_de_graficas(autos_data, todas=FALSE, c("symboling", "normalized_losses", "fuel_type", "aspiration", "num_of_doors", "body_style", "drive_wheels"))
-                  
-tipos_de_graficas(autos_data, todas=FALSE, c("engine_location", "wheel_base", "length", "width", "height", "curb_weight", "engine_type", "num_of_cylinders", "engine_size", "fuel_system", "bore", "stroke" ))
-tipos_de_graficas(autos_data, todas=FALSE, c("compression_ratio", "horsepower", "peak_rpm", "city_mpg", "highway_mpg", "price" ))
-colnames(autos_data)
+a <- tipos_de_graficas(autos_data, todas=FALSE, c("symboling", "normalized_losses", "fuel_type", "aspiration", "num_of_doors", "body_style", "drive_wheels", "engine_location", "wheel_base", "length", "width", "height", "curb_weight", "engine_type", "num_of_cylinders", "engine_size", "fuel_system", "bore", "stroke", "compression_ratio", "horsepower", "peak_rpm", "city_mpg", "highway_mpg", "price"))
+for(i in 1:25){
+  print(a[i,25] )
+}
+for(i in 1:24){
+  print(a[25,i])
+}
 ```
+#### Podemos ver una correlación positiva entre el precio y wheel-base, horsepower, bore, engine-size, width y length, mientras que tiene una correlación negativa con las variables que tengan mpg, podemos ver que todas las que tienen correlación positiva están afectadas por el tamaño del motor. Mientras que las que tienen una correlación negativa tiene que ver con autos que tienen buen rendimiento de gasolina.
+
+
+
 
 ## Análisis Multivariado
 
 ```{r}
-ggparcoord(data = autos_data, columns = c(1:26), scale="uniminmax") + 
-  xlab("") + ylab("") +
-  theme(axis.text.x = element_text(angle = 45))
-```
+autos_data.pca <- prcomp(select_if(autos_data, is.numeric), center = TRUE, scale. = TRUE)
 
-```{r}
-hcav <- hclust(dist(autos_data), method="ave")
-plot(hcav)
+library(devtools)
+library(ggbiplot)
+ggbiplot(autos.pca)
 ```
 
 
-```{r}
-library(vcd)
-doubledecker(xtabs(freq, normalized_losses + make + body_style, data = autos_data),
-             gp = gpar(fill = c("grey90", "steelblue")))
-```
 
-```{r}
-mosaicplot(xtabs(Freq ~ make, data=autos_data), main="")
-```
+
 
