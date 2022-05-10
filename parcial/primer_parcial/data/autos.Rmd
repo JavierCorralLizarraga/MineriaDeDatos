@@ -84,7 +84,9 @@ for(col in colnames(select_if(autos_data,is.factor))){
 
 ## Análisis Bivariado
 
+
 ```{r}
+autos_data<-readRDS('autos_imputada_corregida.rds')
 library(GGally)
 tipos_de_graficas(autos_data, todas=FALSE, c("symboling", "normalized_losses", "fuel_type", "aspiration", "num_of_doors", "body_style", "drive_wheels"))
                   
