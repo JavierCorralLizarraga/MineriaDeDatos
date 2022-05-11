@@ -104,11 +104,12 @@ for(i in 1:24){
 ## Análisis Multivariado
 
 ```{r}
-autos_data.pca <- prcomp(select_if(autos_data, is.numeric), center = TRUE, scale. = TRUE)
-
 library(devtools)
 library(ggbiplot)
-ggbiplot(autos.pca)
+
+autos_data.pca <- prcomp(autos_data[,c(1,2,11:14,17,19:26)], center = TRUE, scale. = TRUE)
+    
+ggbiplot(autos_data.pca, groups = autos_data[["fuel_system"]])
 ```
 
 
