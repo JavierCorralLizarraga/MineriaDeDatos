@@ -112,7 +112,7 @@ autos_data.pca <- prcomp(autos_data[,c(1,2,11:14,17,19:26)], center = TRUE, scal
 ggbiplot(autos_data.pca, groups = autos_data[["fuel_system"]])
 ```
 
-
+#### Podemos apreciar a través de un análisis de componentes principales que las variables numéricas más cercanas al precio en comportamiento son, engine-size, bore, width, length y bore, pero las últimas 4 derivan de tener un motor grande por lo que sería bueno utilizar una variable compuesta por estas para no tener información redundante. También vemos que la variable categórica fuel-system ayuda a separar bien los grupos conforme a los precios.
 
 
 
