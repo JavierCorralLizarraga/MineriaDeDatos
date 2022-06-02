@@ -17,6 +17,8 @@ instalar <- function(paquete) {
 
 paquetes <- c("shiny","plotly","ggplot2","ggbiplot")
 
+namesT <- names(titanic_train)[1:15,18,19]
+
 lapply(paquetes, instalar);
 
 # Define UI for application that draws a histogram
@@ -28,8 +30,8 @@ ui <- fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-      selectInput("nombre", "Caracteristica", names(titanic_train)),
-      selectInput("nombre2", "Segunda Caracteristica (Bivariado)", names(titanic_train))
+      selectInput("nombre", "Caracteristica", namesT),
+      selectInput("nombre2", "Segunda Caracteristica (Bivariado)", namesT)
     ),
     
     # Show a plot of the generated distribution
