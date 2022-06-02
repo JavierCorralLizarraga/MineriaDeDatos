@@ -6,6 +6,8 @@ library(ggplot2)
 library(ggthemes)
 library(VIM)
 
-source('utils.R')
+source("utils.r", encoding = "UTF-8")
 
-kNN(titanicTrain, k=10)
+titanic_train = loadTrain()
+
+titanic_train <- (kNN(titanic_train, k = 10))[1:14]

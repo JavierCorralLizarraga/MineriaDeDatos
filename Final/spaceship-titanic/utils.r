@@ -8,8 +8,8 @@ loadTrain <- function(){
     print('titanicTrain.rds se bajo y guardo\n')
   }
   else{
-    warning('titanicTrain..rds ya existe\n')
-    titanic_train <- readRDS("titanicTrain..rds")
+    warning('titanicTrain.rds ya existe\n')
+    titanic_train <- readRDS("titanicTrain.rds")
   }
   
   return(titanic_train)
