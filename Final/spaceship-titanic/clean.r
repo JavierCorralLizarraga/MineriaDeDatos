@@ -13,3 +13,7 @@ titanic_train <- titanic_train %>% mutate(grupo=as.numeric(grupo)) %>%
   mutate(side=as.factor(side)) %>%
   mutate(fname=as.factor(fname)) %>%
   mutate(lname=as.factor(lname))
+
+glimpse(titanic_train)
+
+titanic_train <- titanic_train %>% mutate(gastos = RoomService + FoodCourt + ShoppingMall + Spa + VRDeck)
