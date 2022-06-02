@@ -1,5 +1,3 @@
-titanic_train = loadTrain()
-
 titanic_train <- extract(titanic_train, 1, into=c("grupo", "id"), regex="([0-9]{4})_([0-9]{2})", remove=TRUE) 
 
 titanic_train <- extract(titanic_train, "Cabin", into=c("deck", "room_num", "side"), regex="(.)/(.)/(.)", remove=TRUE) 

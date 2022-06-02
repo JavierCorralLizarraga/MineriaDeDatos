@@ -7,6 +7,7 @@ library(ggthemes)
 library(VIM)
 
 source("utils.r", encoding = "UTF-8")
+source("clean.r", encoding = "UTF-8")
 
 titanic_train = loadTrain()
 
