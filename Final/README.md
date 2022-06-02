@@ -10,7 +10,7 @@ siguiendo la metodología CRISP-DM. Los entregables de cada etapa son:
 
 ## Comprensión de los datos (R - Bash)
 * Reporte reproducible de recolección de datos.
-* *Análisis exploratorio de datos (reporte reproducible)
+* Análisis exploratorio de datos (reporte reproducible)
     * Univariado
     * Bivariado
     * Multivariado
