@@ -11,4 +11,4 @@ source("clean.r", encoding = "UTF-8")
 
 titanic_train = loadTrain()
 
-titanic_train <- (kNN(titanic_train, k = 10))[1:14]
+titanic_train <- (kNN(titanic_train, k = 10))[1:19]
