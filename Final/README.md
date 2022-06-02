@@ -5,7 +5,7 @@ siguiendo la metodología CRISP-DM. Los entregables de cada etapa son:
 ## Comprensión del negocio (R Markdown)
 * Antecedentes
 * Determinación del objetivo
-* **Determinación de criterio de éxito (i.e. superar benchmark de modelos que utilizan datos sin preprocesar)
+* Determinación de criterio de éxito (i.e. superar benchmark de modelos que utilizan datos sin preprocesar)
 * Plan del proyecto
 
 ## Comprensión de los datos (R - Bash)
