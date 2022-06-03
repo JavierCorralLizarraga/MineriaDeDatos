@@ -23,7 +23,7 @@ titanic_test <- loadTest()
 
 titanic_test <- clean(titanic_test)
 
-titanic_test <- (kNN(titanic_test, k = 10))[1:19]
+titanic_test <- (kNN(titanic_test, k = 10))[1:18]
 
 path <- "titanic_test.feather"
 write_feather(titanic_test, path)
