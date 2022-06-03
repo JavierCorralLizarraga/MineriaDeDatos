@@ -32,7 +32,17 @@ Así, de este proceso resulta una variable `titanic_train` que será usado para 
 
 ## Comprensión de los Datos
 
-Para visualizar los datos se usó una aplicación Shiny que usa la variable `titanic_train`ya generada anteriormente. En esta aplicación se puede elegir las variables (menos el nombre y apellido, como son demasiadas categorías posibles y no pareció relevante agruparlos por, por ejemplo, primera letra) para visualizar gráficas en una variable, bivariadas, y multivariadas. Para el análisis univariado, se muestran graficas de barra, agrupadas por factor en caso de variables factor o mostrado en 41 *bins* en caso de numéricos; para el analisis multivariado se usan gráficas de dispersión para dos variables numéricas, gráficas caja para unavariable categórica sobre una numérica, y una gráfica barra separado en colores para dos categóricas. Para el multivariado se hizo analisis de componentes principales y se realizó una gráfica de dispersión sobre los dos más grandes, coloreando los puntos según su categoría, para variables categóricas, o en escala de mayor a menor para numéricas
+Para visualizar los datos se usó una aplicación Shiny que usa la variable `titanic_train` ya generada anteriormente. En esta aplicación se puede elegir las variables (menos el nombre y apellido, como son demasiadas categorías posibles y no pareció relevante agruparlos por, por ejemplo, primera letra) para visualizar gráficas en una variable, bivariadas, y multivariadas. Para el análisis univariado, se muestran graficas de barra, agrupadas por factor en caso de variables factor o mostrado en 41 *bins* en caso de numéricos; para el analisis multivariado se usan gráficas de dispersión para dos variables numéricas, gráficas caja para unavariable categórica sobre una numérica, y una gráfica barra separado en colores para dos categóricas. Para el multivariado se hizo analisis de componentes principales y se realizó una gráfica de dispersión sobre los dos más grandes, coloreando los puntos según su categoría, para variables categóricas, o en escala de mayor a menor para numéricas.
+
+A continuación se muestran algunas observaciones interesantes obtenidas del análisis:
+
+![División de destinos por planeta de origen](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/destino-homeplanet.png)
+- Comparado con otros planetas destino, el planeta origen de los que van a PSO J318.5-22 son casi todos de la Tierra
+
+![Distribución de edades](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/edad.png)
+- Hay una caida significativa de viajantes abajo de la edad de adultez, que es de esperarse si los viajantes no adultos requieren ir en grupo con adulto
+
+
 
 ## Modelado
 
