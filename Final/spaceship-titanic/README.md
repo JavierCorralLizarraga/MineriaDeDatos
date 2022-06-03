@@ -39,11 +39,19 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 ![División de destinos por planeta de origen](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/destino-homeplanet.png)
 - Comparado con otros planetas destino, el planeta origen de los que van a PSO J318.5-22 son casi todos de la Tierra
 
+
 ![Distribución de edades](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/edad.png)
 - Hay una caida significativa de viajantes abajo de la edad de adultez, que es de esperarse si los viajantes no adultos requieren ir en grupo con adulto
 
+
 ![Cantidad gastada en cada amenidad por planeta origen](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/gastos-by-homeplanet.png)
 - Viajantes de Marte son mas propensos a gastar en servicio de cuarto y en compras en ell Mall, los de Europa en comida rápida y en spa, y los de la Tierra en general gastan menos.
+
+![Cantidad de viajantes en animación suspendida por nivel](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/cryosleep.png)
+- La mayoría de los viajantes en animación suspendida estan hospedados en el nivel B, en donde casi todas las habitaciones han sido dedicadas para este propósito.
+
+![Cantidad total gastada por nivel de hospedaje](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/gastos-deck.png)
+- Los visitantes que más gastan se encuentran en los niveles A, C y T, que pueden posiblemente ser entonces mas ricos en promedio, mientras que el nivel B es el de menos gastos, lo que tiene sentido como la mayoría de estos están en animación suspendida y por lo tanto son incapaces de usar las amenidades.
 
 
 ## Modelado
