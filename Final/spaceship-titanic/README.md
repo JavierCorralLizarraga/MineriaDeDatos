@@ -42,6 +42,8 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 ![Distribución de edades](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/edad.png)
 - Hay una caida significativa de viajantes abajo de la edad de adultez, que es de esperarse si los viajantes no adultos requieren ir en grupo con adulto
 
+![Cantidad gastada en cada amenidad por planeta origen](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/gastos-by-homeplanet.png)
+- Viajantes de Marte son mas propensos a gastar en servicio de cuarto y en compras en ell Mall, los de Europa en comida rápida y en spa, y los de la Tierra en general gastan menos.
 
 
 ## Modelado
