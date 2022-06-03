@@ -19,5 +19,5 @@ clean <- function(titanic){
   
   titanic <- titanic %>% mutate(gastos = RoomService + FoodCourt + ShoppingMall + Spa + VRDeck)
   
-  return titanic
+  return(titanic)
 }
