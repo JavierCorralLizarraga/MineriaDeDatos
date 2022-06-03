@@ -61,7 +61,7 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 - El planeta orígen queda distribuida de manera relativamente correlada por los componentes principales, aunque no es separable.
 
 
-![Distribución de planeta origen por componentes principales](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/multivariado.png)
+![Cantidad de visitantes transportados por nivel de hospedaje](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/transported-deck.png)
 - La una significante mayoría de las personas transportadas son de los niveles B y F; notese que aunque la mayoría de los de B estaban en animación suspendida, lo musmo no ocurre con F.
 
 
