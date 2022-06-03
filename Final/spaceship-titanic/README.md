@@ -19,7 +19,7 @@ El objetivo final de este desafío es poder determinar, mediante la información
 
 ### Determinación del Criterio de Éxito
 
-
+En la práctica se varios métodos de modelado distintos, ya ajustados con hiperparámetros mejor optimizados usando grid search, para estos, el criterio de éxito que determina el que se usará se basa en la comparación de la matriz de confusión y de la curva de exito generada al probar los modelos sobre el subconjunto de prueba (esta es distinta al presente en `test.csv`como esta es sobre la que el desafío evalua el resultado y por lo tanto no da el resultado correcto a-priori para evaluarlo, por lo que el subconjunto de prueba es elegido de un 25% predeterminado de `train.csv`).
 
 ### Plan de Proyecto
 
