@@ -1,14 +1,14 @@
 # Comprehensión del Negocio
 
-## Antecedentes
+### Antecedentes
 
 :)
 
-## Determinación del Objetivo
+### Determinación del Objetivo
 
-## Determinación del Criterio de Éxito
+### Determinación del Criterio de Éxito
 
-## Plan de Proyecto
+### Plan de Proyecto
 
 # Preparación de los Datos
 
@@ -19,4 +19,4 @@
 
 # Implantación
 
-## Reporte Ejecutivo
+### Reporte Ejecutivo
