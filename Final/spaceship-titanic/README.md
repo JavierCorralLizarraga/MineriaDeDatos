@@ -47,11 +47,22 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 ![Cantidad gastada en cada amenidad por planeta origen](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/gastos-by-homeplanet.png)
 - Viajantes de Marte son mas propensos a gastar en servicio de cuarto y en compras en ell Mall, los de Europa en comida rápida y en spa, y los de la Tierra en general gastan menos.
 
+
 ![Cantidad de viajantes en animación suspendida por nivel](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/cryosleep.png)
 - La mayoría de los viajantes en animación suspendida estan hospedados en el nivel B, en donde casi todas las habitaciones han sido dedicadas para este propósito.
 
+
 ![Cantidad total gastada por nivel de hospedaje](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/gastos-deck.png)
 - Los visitantes que más gastan se encuentran en los niveles A, C y T, que pueden posiblemente ser entonces mas ricos en promedio, mientras que el nivel B es el de menos gastos, lo que tiene sentido como la mayoría de estos están en animación suspendida y por lo tanto son incapaces de usar las amenidades.
+
+
+
+![Distribución de planeta origen por componentes principales](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/multivariado.png)
+- El planeta orígen queda distribuida de manera relativamente correlada por los componentes principales, aunque no es separable.
+
+
+![Distribución de planeta origen por componentes principales](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/multivariado.png)
+- La una significante mayoría de las personas transportadas son de los niveles B y F; notese que aunque la mayoría de los de B estaban en animación suspendida, lo musmo no ocurre con F.
 
 
 ## Modelado
