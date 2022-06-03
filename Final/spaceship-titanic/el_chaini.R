@@ -106,7 +106,7 @@ server <- function(input, output) {
   
   output$distPlot3 <- renderPlotly({
     
-    titanic_train.pca <- prcomp(titanic_train[,c(1,2,11:14,17,19:26)], center = TRUE,scale. = TRUE)
+    titanic_train.pca <- prcomp(titanic_train[,c(1,2,6,9,11:15)], center = TRUE,scale. = TRUE)
     
     p <- ggbiplot(titanic_train.pca, groups = titanic_train[[input$nombre]])
     
