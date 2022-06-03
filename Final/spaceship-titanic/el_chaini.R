@@ -17,7 +17,7 @@ instalar <- function(paquete) {
 
 paquetes <- c("shiny","plotly","ggplot2","ggbiplot")
 
-namesT <- names(titanic_train)[1:15,18,19]
+namesT <- names(titanic_train)[c(1:15,18,19)]
 
 lapply(paquetes, instalar);
 
