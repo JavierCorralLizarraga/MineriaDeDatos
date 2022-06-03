@@ -1,22 +1,22 @@
-## Comprehensión del Negocio
+# Comprehensión del Negocio
 
-# Antecedentes
+## Antecedentes
 
 :)
 
-# Determinación del Objetivo
+## Determinación del Objetivo
 
-# Determinación del Criterio de Éxito
+## Determinación del Criterio de Éxito
 
-# Plan de Proyecto
+## Plan de Proyecto
 
-## Preparación de los Datos
+# Preparación de los Datos
 
 
-## Comprensión de los Datos
+# Comprensión de los Datos
 
-## Modelado
+# Modelado
 
-## Implantación
+# Implantación
 
-# Reporte Ejecutivo
+## Reporte Ejecutivo
