@@ -1,4 +1,4 @@
-# Comprehensión del Negocio
+## Comprehensión del Negocio
 
 ### Antecedentes
 
@@ -10,13 +10,13 @@
 
 ### Plan de Proyecto
 
-# Preparación de los Datos
+## Preparación de los Datos
 
 
-# Comprensión de los Datos
+## Comprensión de los Datos
 
-# Modelado
+## Modelado
 
-# Implantación
+## Implantación
 
 ### Reporte Ejecutivo
