@@ -1,4 +1,5 @@
 Imágenes
+
 ![División de destinos por planeta de origen](github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/destino-homeplanet.png)
 ![Distribución de edades](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/edad.png)
 ![Cantidad gastada en cada amenidad por planeta origen](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/gastos-by-homeplanet.png)
