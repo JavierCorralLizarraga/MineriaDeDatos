@@ -23,6 +23,8 @@ En la práctica se varios métodos de modelado distintos, ya ajustados con hiper
 
 ### Plan de Proyecto
 
+El plan es que quede bien chido.
+
 ## Preparación de los Datos
 El proceso de preparación de los datos es llevada a cabo en el archivo `main.R`, usando información de los archivos `utils.r` y `clean.r`. En primer lugar el archivo `train.csv` se lee y se guarda a un archivo RDS, en caso de no haberse guardado previamente, y se le da el nombre de variable `titanic_train` Aquí, la función `problems()` no encuentra ninguna filas, indicando que no hay filas desplazadas por falta de comas, de donde el único proceso de limpieza estrictamente necesaria fue la imputación de los datos, que llevamos a cabo usando el paquete `VIM`, que provee una función de imputación por similitud de K-medias. 
 
