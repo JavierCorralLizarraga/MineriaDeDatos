@@ -6,7 +6,11 @@ En el escenario hipotético que plantea este desafía, en el año 2912 el navío
 
 ### Determinación del Objetivo
 
+El objetivo final de este desafío es poder determinar, mediante la información del archivo `train.csv` que tiene toda las variables antes mencionadas, un modelo de clasificación binaria que a los viajeros de `test.csv`, que tienen toda la información menos `Transported`, pueda asignarseles esta variable faltante de manera correcta. 
+
 ### Determinación del Criterio de Éxito
+
+
 
 ### Plan de Proyecto
 
