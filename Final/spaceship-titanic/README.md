@@ -68,10 +68,10 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 
 
 ## Modelado
-
+Iteramos con el método Grid Search para obtener los mejores parámetros de cada modelo seleccionado a través del score, después, comparamos entre todos los modelos óptimos a través de la matriz de confusión para seleccionar el modelo final. Obtuvimos que el mejor modelo es RandomForest.
 ## Implantación
-
+Utilizamos DJango para montarlo en un framework de programación web, el modelo fue guardado en un archivo serializable con la librería Pickle, que nos permite también cargarlo directamente en Django ya que todo es código de Python. 
 ### Reporte
-Resultado del modelo en la competencia de Kaggle:
+Resultado del modelo en la competencia de Kaggle
 ![image](https://user-images.githubusercontent.com/36738020/172203096-7e965a82-fb83-489e-a613-8e4982ed31c6.png)
 
