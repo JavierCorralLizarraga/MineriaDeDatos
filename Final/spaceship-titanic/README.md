@@ -72,3 +72,6 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 ## Implantación
 
 ### Reporte
+Resultado del modelo en la competencia de Kaggle:
+![image](https://user-images.githubusercontent.com/36738020/172203096-7e965a82-fb83-489e-a613-8e4982ed31c6.png)
+
