@@ -83,7 +83,10 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 - Las personas en el lado Starboard de la nave son más propensas a ser transportadas.
 
 ![image](https://user-images.githubusercontent.com/36738020/172483421-a40ddc06-3a9d-403b-9bdb-2135b6786933.png)
-- Las personas transportadas gastaban menos, esto se lo atribuímos a la relación de que la mayoría estaban en CryoSleep y no gastaban. 
+- Las personas transportadas gastaban menos, esto se lo atribuímos a la relación de que la mayoría estaban en CryoSleep y no gastaban.
+
+![Distribución de Transportados por TSNE](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/tsne.png)
+-Comparado con PCA que fue altamente mezclado, la distribución de los transportados por TSNE sí resulta más separado, siendo los transportados más probables de ser parte de conjuntos de puntos periféricos comparados con el agrupamiento central de elementos similares, aunque aun así hay muchos que caen dentro del centro que sí fueron transportados o vice versa.
 
 ## Modelado
 Iteramos con el método Grid Search para obtener los mejores parámetros de cada modelo seleccionado a través del score, después, comparamos entre todos los modelos óptimos a través de la matriz de confusión para seleccionar el modelo final. Obtuvimos que el mejor modelo es RandomForest.
