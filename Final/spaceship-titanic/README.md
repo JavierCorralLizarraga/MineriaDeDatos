@@ -19,12 +19,15 @@ El objetivo final de este desafío es poder determinar, mediante la información
 
 ### Determinación del Criterio de Éxito
 
-En la práctica se varios métodos de modelado distintos, ya ajustados con hiperparámetros mejor optimizados usando grid search, para estos, el criterio de éxito que determina el que se usará se basa en la comparación de la matriz de confusión y de la curva de exito generada al probar los modelos sobre el subconjunto de prueba (esta es distinta al presente en `test.csv`como esta es sobre la que el desafío evalua el resultado y por lo tanto no da el resultado correcto a-priori para evaluarlo, por lo que el subconjunto de prueba es elegido de un 25% predeterminado de `train.csv`).
+En la práctica se varios métodos de modelado distintos, ya ajustados con hiperparámetros mejor optimizados usando grid search, para estos, el criterio de éxito que determina el que se usará se basa en la comparación de la matriz de confusión y de la curva de exito generada al probar los modelos sobre el subconjunto de prueba (esta es distinta al presente en `test.csv`como esta es sobre la que el desafío evalua el resultado y por lo tanto no da el resultado correcto a-priori para evaluarlo, por lo que el subconjunto de prueba es elegido de un 25% predeterminado de `train.csv`). Respecto a la compatencia y por las restricciones de tiempo que tiene el equipo, consideramos que un modelo factible podría ser aquel que tenga un accuracy mayor a 70% en la competencia de Kaggle.
 
 ### Plan de Proyecto
 
-Nuestro plan de proyecto constaría de aproximadamente 15 horas de trabajo, y consta de tres fases.
-
+Nuestro plan de proyecto constaría de aproximadamente 15 horas de trabajo, y consta de cuatro fases.
+1. Selección y limpieza de datos con ingeniería manual de características. (3 Horas)
+2. Análisis Exploratorio. (3 Horas)
+3. Selección de modelo, ajuste de hiperparámetros, evaluación del modelo y reentrenamiento con los datos de test. (6 Horas)
+4. Implantación del modelo en un servicio web. (3 Horas)
 
 ## Preparación de los Datos
 El proceso de preparación de los datos es llevada a cabo en el archivo `main.R`, usando información de los archivos `utils.r` y `clean.r`. En primer lugar el archivo `train.csv` se lee y se guarda a un archivo RDS, en caso de no haberse guardado previamente, y se le da el nombre de variable `titanic_train` Aquí, la función `problems()` no encuentra ninguna filas, indicando que no hay filas desplazadas por falta de comas, de donde el único proceso de limpieza estrictamente necesaria fue la imputación de los datos, que llevamos a cabo usando el paquete `VIM`, que provee una función de imputación por similitud de K-medias. 
