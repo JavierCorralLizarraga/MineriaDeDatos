@@ -6,7 +6,7 @@ En el escenario hipotético que plantea este desafía, en el año 2912 el navío
 - `PassengerId`, el número ID de los pasajeros
 - `HomePlanet`, el planeta de donde abordaron
 - `CryoSleep`, que indica sí viajaron en animación suspendida o no
-- `Cabin`, que indica la cabina en que se hospedan, en formato nivel/número/lado
+- `Cabin`, que indica la cabina en que se hospedan, en formato deck/número/lado
 - `Destination`, que indica el destino a que debían llegar; `Age`, la edad
 - `VIP`, que indica si se pagó extra por VIP
 - `RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck`, son cada una las cantidades de dinero pagadas en estas amenidades respectivos del crucero
