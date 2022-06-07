@@ -86,10 +86,11 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 - Las personas transportadas gastaban menos, esto se lo atribuímos a la relación de que la mayoría estaban en CryoSleep y no gastaban.
 
 ![Distribución de Transportados por TSNE](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/tsne.png)
+
 -Comparado con PCA que fue altamente mezclado, la distribución de los transportados por TSNE sí resulta más separado, siendo los transportados más probables de ser parte de conjuntos de puntos periféricos comparados con el agrupamiento central de elementos similares, aunque aun así hay muchos que caen dentro del centro que sí fueron transportados o vice versa.
 
 ## Modelado
-Iteramos con el método Grid Search para obtener los mejores parámetros de cada modelo seleccionado a través del score, después, comparamos entre todos los modelos óptimos a través de la matriz de confusión para seleccionar el modelo final. Obtuvimos que el mejor modelo es RandomForest.
+Para llevar a cabo la decisión de que modelo usar para mejor representación de la variable buscada (Transported), se decidió llevar a cabo cinco técnicas de modelado en Python: Logistic Regresion, K Nearest Neighbors, Random Forest, Boosted Random Forest, y Support Vector Machine (En Python también se llevó a cabo TSNE para el análisis multivariado de la sección anterior pero no se usó como modelo). Para cada una de estas técnicas llevamos a caso un proceso similar: Iteramos con el método Grid Search para obtener los mejores parámetros de cada modelo seleccionado a través del score, después, comparamos entre todos los modelos óptimos a través de la matriz de confusión para seleccionar el modelo final. Obtuvimos que el mejor modelo es RandomForest.
 ## Implantación
 Utilizamos DJango para montarlo en un framework de programación web, el modelo fue guardado en un archivo serializable con la librería Pickle, que nos permite también cargarlo directamente en Django ya que todo es código de Python. 
 ### Reporte
