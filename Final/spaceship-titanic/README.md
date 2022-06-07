@@ -68,8 +68,22 @@ A continuación se muestran algunas observaciones interesantes obtenidas del an�
 
 
 ![Cantidad de visitantes transportados por nivel de hospedaje](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/transported-deck.png)
-- La una significante mayoría de las personas transportadas son de los niveles B y F; notese que aunque la mayoría de los de B estaban en animación suspendida, lo musmo no ocurre con F.
+- La una significante mayoría de las personas transportadas son de los niveles B y F; notese que aunque la mayoría de los de B estaban en animación suspendida, lo mismo no ocurre con F.
 
+![image](https://user-images.githubusercontent.com/36738020/172481358-af2bfbe0-e593-471d-8f3e-66fd62930e3c.png)
+- Las personas que fueron transportadas viajaban en su mayoría solos o en pareja, las no transportadas viajaban en su mayoría solos, grupos de más de tres personas son atípicos en ambos casos.
+
+![image](https://user-images.githubusercontent.com/36738020/172481925-5fa63abb-23d4-4ef0-a373-747ec1e9e2b8.png)
+- Las personas que venían de Europa, eran más propensas en proporción a ser transportadas, mientras que las de la Tierra eran más propensos a no ser transportados, los de Marte están divididos casi igualmente en transportados y no transportados.
+
+![image](https://user-images.githubusercontent.com/36738020/172482773-21ae9fe6-b974-47ee-8483-f83da539c80f.png)
+- Las personas que estaban en CryoSleep son más propensas a ser transportadas.
+
+![image](https://user-images.githubusercontent.com/36738020/172482987-f95da69e-6748-4ba9-9829-93131085f867.png)
+- Las personas en el lado Starboard de la nave son más propensas a ser transportadas.
+
+![image](https://user-images.githubusercontent.com/36738020/172483421-a40ddc06-3a9d-403b-9bdb-2135b6786933.png)
+- Las personas transportadas gastaban menos, esto se lo atribuímos a la relación de que la mayoría estaban en CryoSleep y no gastaban. 
 
 ## Modelado
 Iteramos con el método Grid Search para obtener los mejores parámetros de cada modelo seleccionado a través del score, después, comparamos entre todos los modelos óptimos a través de la matriz de confusión para seleccionar el modelo final. Obtuvimos que el mejor modelo es RandomForest.
