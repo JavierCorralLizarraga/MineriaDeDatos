@@ -8,3 +8,4 @@
 ![Distribución de planeta origen por componentes principales](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/multivariado.png)
 ![Cantidad de visitantes transportados por nivel de hospedaje](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/transported-deck.png)
 ![Cantidad de viajantes en animación suspendida por nivel](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/cryosleep.png)
+![Distribución de Transportados por TSNE](https://github.com/JavierCorralLizarraga/MineriaDeDatos/blob/main/Final/spaceship-titanic/img/tsne.png)
