@@ -1,4 +1,4 @@
-## Comprehensión del Negocio
+## Comprensión del Negocio
 
 ### Antecedentes
 
