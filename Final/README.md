@@ -1,4 +1,6 @@
-Proyecto Final 
+#Proyecto Final 
+
+El reporte del proyecto se encuentra en la carpeta `spaceship-titanic`
 
 siguiendo la metodología CRISP-DM. Los entregables de cada etapa son:
 
